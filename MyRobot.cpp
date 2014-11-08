@@ -1,4 +1,5 @@
 #include "WPILib.h"
+#include "PortAssignments.h"
 
 /**
  * This is a demo program showing the use of the RobotBase class.
@@ -11,19 +12,12 @@ class RobotDemo : public SimpleRobot
 	RobotDrive driveTrain; // both drive wheels/motors
 	Joystick leftStick;
 	Joystick rightStick;
-	
-	static const int leftMotorChannel = 3;
-	static const int rightMotorChannel = 4;
-	
-	static const int leftJoystickID  = 1;
-	static const int rightJoystickID = 2;
-
 
 public:
 	RobotDemo():
-		driveTrain(leftMotorChannel, rightMotorChannel), // these must be initialized in the same order
-		leftStick(leftJoystickID),		                 // as they are declared above.
-	    rightStick(rightJoystickID)		
+		driveTrain(PortAssign::leftMotorChannel, PortAssign::rightMotorChannel), // these must be initialized in the same order
+		leftStick(PortAssign::leftJoystickID),		                 // as they are declared above.
+	    rightStick(PortAssign::rightJoystickID)		
 	{
 		driveTrain.SetExpiration(0.1);
 	}
