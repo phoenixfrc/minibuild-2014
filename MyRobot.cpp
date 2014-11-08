@@ -19,7 +19,7 @@ public:
 		driveTrain(PortAssign::leftMotorChannel, PortAssign::rightMotorChannel), // these must be initialized in the same order
 		leftStick(PortAssign::leftJoystickID),		                 // as they are declared above.
 	    rightStick(PortAssign::rightJoystickID),	
-		roller(PortAssign::rollerID)
+		roller(PortAssign::rollerChannel)
 	{
 		driveTrain.SetExpiration(0.1);
 	}
