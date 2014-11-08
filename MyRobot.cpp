@@ -8,13 +8,22 @@
  */ 
 class RobotDemo : public SimpleRobot
 {
-	RobotDrive driveTrain; // robot drive system
-	Joystick stick; // only joystick
+	RobotDrive driveTrain; // both drive wheels/motors
+	Joystick leftStick;
+	Joystick rightStick;
+	
+	static const int leftMotorChannel = 3;
+	static const int rightMotorChannel = 4;
+	
+	static const int leftJoystickID  = 1;
+	static const int rightJoystickID = 2;
+
 
 public:
 	RobotDemo():
-		driveTrain(3, 4),	// these must be initialized in the same order
-		stick(1)		// as they are declared above.
+		driveTrain(leftMotorChannel, rightMotorChannel), // these must be initialized in the same order
+		leftStick(leftJoystickID),		                 // as they are declared above.
+	    rightStick(rightJoystickID)		
 	{
 		driveTrain.SetExpiration(0.1);
 	}
@@ -38,7 +47,7 @@ public:
 		driveTrain.SetSafetyEnabled(true);
 		while (IsOperatorControl())
 		{
-			driveTrain.ArcadeDrive(stick); // drive with arcade style (use right stick)
+			driveTrain.TankDrive(leftStick, rightStick); // drive with arcade style (use right stick)
 			Wait(0.005);				// wait for a motor update time
 		}
 	}
