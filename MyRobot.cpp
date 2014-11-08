@@ -8,15 +8,15 @@
  */ 
 class RobotDemo : public SimpleRobot
 {
-	RobotDrive myRobot; // robot drive system
+	RobotDrive driveTrain; // robot drive system
 	Joystick stick; // only joystick
 
 public:
 	RobotDemo():
-		myRobot(3, 4),	// these must be initialized in the same order
+		driveTrain(3, 4),	// these must be initialized in the same order
 		stick(1)		// as they are declared above.
 	{
-		myRobot.SetExpiration(0.1);
+		driveTrain.SetExpiration(0.1);
 	}
 
 	/**
@@ -24,10 +24,10 @@ public:
 	 */
 	void Autonomous()
 	{
-		myRobot.SetSafetyEnabled(false);
-		myRobot.Drive(-0.5, 0.0); 	// drive forwards half speed
+		driveTrain.SetSafetyEnabled(false);
+		driveTrain.Drive(-0.5, 0.0); 	// drive forwards half speed
 		Wait(2.0); 				//    for 2 seconds
-		myRobot.Drive(0.0, 0.0); 	// stop robot
+		driveTrain.Drive(0.0, 0.0); 	// stop robot
 	}
 
 	/**
@@ -35,10 +35,10 @@ public:
 	 */
 	void OperatorControl()
 	{
-		myRobot.SetSafetyEnabled(true);
+		driveTrain.SetSafetyEnabled(true);
 		while (IsOperatorControl())
 		{
-			myRobot.ArcadeDrive(stick); // drive with arcade style (use right stick)
+			driveTrain.ArcadeDrive(stick); // drive with arcade style (use right stick)
 			Wait(0.005);				// wait for a motor update time
 		}
 	}
