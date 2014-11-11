@@ -1,3 +1,6 @@
+#ifndef PORT_ASSIGN_H
+#define PORT_ASSIGN_H
+
 struct PortAssign
 {
 	//Motor Ports
@@ -9,3 +12,5 @@ struct PortAssign
 	static const int rightJoystickID = 2;
 	
 };
+
+#endif

@@ -29,10 +29,13 @@ public:
 	 */
 	void Autonomous()
 	{
-		driveTrain.SetSafetyEnabled(false);
 		driveTrain.Drive(-0.5, 0.0); 	// drive forwards half speed
+		
+		driveTrain.SetSafetyEnabled(false);
 		Wait(2.0); 				//    for 2 seconds
 		driveTrain.Drive(0.0, 0.0); 	// stop robot
+		
+		driveTrain.SetSafetyEnabled(true);
 	}
 
 	/**
