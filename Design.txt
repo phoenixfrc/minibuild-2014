@@ -1,0 +1,14 @@
+
+   Gamepad:
+Buttons control: Camera
+Name: gamepadf310
+
+   Joysticks:
+Buttons control: Roller
+Joysticks control: Movement of robot
+
+   Run motors in tank drive
+
+   Debug Joystick output to driver station LCD
+
+   Two button control of roller

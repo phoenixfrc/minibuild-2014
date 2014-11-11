@@ -12,12 +12,14 @@ class RobotDemo : public SimpleRobot
 	RobotDrive driveTrain; // both drive wheels/motors
 	Joystick leftStick;
 	Joystick rightStick;
+	Talon roller;
 
 public:
 	RobotDemo():
 		driveTrain(PortAssign::leftMotorChannel, PortAssign::rightMotorChannel), // these must be initialized in the same order
 		leftStick(PortAssign::leftJoystickID),		                 // as they are declared above.
-	    rightStick(PortAssign::rightJoystickID)		
+	    rightStick(PortAssign::rightJoystickID),	
+		roller(PortAssign::rollerChannel)
 	{
 		driveTrain.SetExpiration(0.1);
 	}
@@ -27,10 +29,13 @@ public:
 	 */
 	void Autonomous()
 	{
-		driveTrain.SetSafetyEnabled(false);
 		driveTrain.Drive(-0.5, 0.0); 	// drive forwards half speed
+		
+		driveTrain.SetSafetyEnabled(false);
 		Wait(2.0); 				//    for 2 seconds
 		driveTrain.Drive(0.0, 0.0); 	// stop robot
+		
+		driveTrain.SetSafetyEnabled(true);
 	}
 
 	/**
