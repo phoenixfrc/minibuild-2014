@@ -46,7 +46,7 @@ public:
 		driveTrain.SetSafetyEnabled(true);
 		while (IsOperatorControl())
 		{
-			driveTrain.TankDrive(leftStick, rightStick); // drive with arcade style (use right stick)
+			driveTrain.TankDrive(leftStick, rightStick); // drive with tankdrive
 			Wait(0.005);				// wait for a motor update time
 		}
 	}

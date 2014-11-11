@@ -4,7 +4,7 @@
 struct PortAssign
 {
 	//Motor Ports
-	static const int leftMotorChannel = 1;
+	static const int leftMotorChannel = 4;//port 4 because port 1 doesn't work
 	static const int rightMotorChannel = 2;
 	static const int rollerChannel = 3;
 	//Joystick Ports
