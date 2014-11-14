@@ -1,8 +1,13 @@
 #include "RollCtrl.h"
 #include "Gamepadf310.h"
 
-RollCtrl::RollCtrl(uint32_t talonPort, Joystick * gamePadPointer):
-	roller(talonPort)
+RollCtrl::RollCtrl(uint32_t talonPort, Gamepadf310 * gamePadPointer):
+	m_roller(talonPort)
 {
-	gamePad = gamePadPointer;
+	m_gamePad = gamePadPointer;
+}
+
+void RollCtrl::performRollerTasks()
+{
+	
 }

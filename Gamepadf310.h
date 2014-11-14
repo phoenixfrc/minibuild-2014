@@ -3,6 +3,7 @@
 #include "WPILib.h"
 class Gamepadf310 : public Joystick
 {
+public:
 	explicit Gamepadf310(uint32_t port);
 	Gamepadf310(uint32_t port, uint32_t numAxisTypes, uint32_t numButtonTypes);
 	virtual ~Gamepadf310();

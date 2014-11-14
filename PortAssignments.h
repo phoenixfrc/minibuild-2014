@@ -10,7 +10,7 @@ struct PortAssign
 	//Joystick Ports
 	static const int leftJoystickID  = 1;
 	static const int rightJoystickID = 2;
-	
+	static const int gamePadID = 3;
 };
 
 #endif
