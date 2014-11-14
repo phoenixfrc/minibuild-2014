@@ -1,14 +1,27 @@
 
+Henri
    Gamepad:
 Buttons control: Camera
 Name: gamepadf310
+
 
    Joysticks:
 Buttons control: Roller
 Joysticks control: Movement of robot
 
-   Run motors in tank drive
 
+Manual / test mode
+   - show digital inputs 
+   - show joystic values
    Debug Joystick output to driver station LCD
 
    Two button control of roller
+      required: Hold on driver button ? or assistant button forward 
+         nice to have: start timer for 10ish seconds for auto shutoff
+      required: Hold on driver button ? or assistant button reverse 
+         nice to have: start timer for 3ish seconds for auto shutoff
+
+   Run motors in tank drive
+      Tested, with minibuild drive, 2014-11-10
+      had to change ports due to talon/pcm port 1 issue
+
