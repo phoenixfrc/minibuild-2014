@@ -16,6 +16,10 @@ class RollCtrl
 	rollStates m_desiredState;
 	Talon m_roller;
 	Gamepadf310 * m_gamePad;
+	bool m_pressedALast;
+	bool m_pressedBLast;
+	bool m_pressedXLast;
+	bool m_pressedYLast;
 public:
 	RollCtrl(uint32_t talonPort, Gamepadf310 * gamePadPointer);
 	void performRollerTasks();
