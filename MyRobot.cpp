@@ -11,56 +11,56 @@
  */ 
 class RobotDemo : public SimpleRobot
 {
-	RobotDrive driveTrain; // both drive wheels/motors
-	Joystick leftStick;
-	Joystick rightStick;
-	Gamepadf310 gamePad;
-	RollCtrl roller;
+    RobotDrive driveTrain; // both drive wheels/motors
+    Joystick leftStick;
+    Joystick rightStick;
+    Gamepadf310 gamePad;
+    RollCtrl roller;
 public:
-	RobotDemo():
-		driveTrain(PortAssign::leftMotorChannel, PortAssign::rightMotorChannel), // these must be initialized in the same order
-		leftStick(PortAssign::leftJoystickID),		                 // as they are declared above.
-	    rightStick(PortAssign::rightJoystickID),
-	    gamePad(PortAssign::gamePadID),
+    RobotDemo():
+        driveTrain(PortAssign::leftMotorChannel, PortAssign::rightMotorChannel), // these must be initialized in the same order
+        leftStick(PortAssign::leftJoystickID),		                 // as they are declared above.
+        rightStick(PortAssign::rightJoystickID),
+        gamePad(PortAssign::gamePadID),
         roller(PortAssign::rollerChannel, &gamePad)
-	{
-		driveTrain.SetExpiration(0.1);
-	}
+    {
+        driveTrain.SetExpiration(0.1);
+    }
 
-	/**
-	 * Drive left & right motors for 2 seconds then stop
-	 */
-	void Autonomous()
-	{
-		driveTrain.Drive(-0.5, 0.0); 	// drive forwards half speed
-		
-		driveTrain.SetSafetyEnabled(false);
-		Wait(2.0); 				//    for 2 seconds
-		driveTrain.Drive(0.0, 0.0); 	// stop robot
-		
-		driveTrain.SetSafetyEnabled(true);
-	}
+    /**
+     * Drive left & right motors for 2 seconds then stop
+     */
+    void Autonomous()
+    {
+        driveTrain.Drive(-0.5, 0.0); 	// drive forwards half speed
 
-	/**
-	 * Runs the motors with arcade steering. 
-	 */
-	void OperatorControl()
-	{
-		driveTrain.SetSafetyEnabled(true);
-		while (IsOperatorControl())
-		{
-			driveTrain.TankDrive(leftStick, rightStick); // drive with tankdrive
-			roller.performRollerTasks();
-			Wait(0.005);				// wait for a motor update time
-		}
-	}
-	
-	/**
-	 * Runs during test mode
-	 */
-	void Test() {
+        driveTrain.SetSafetyEnabled(false);
+        Wait(2.0); 				//    for 2 seconds
+        driveTrain.Drive(0.0, 0.0); 	// stop robot
 
-	}
+        driveTrain.SetSafetyEnabled(true);
+    }
+
+    /**
+     * Runs the motors with arcade steering. 
+     */
+    void OperatorControl()
+    {
+        driveTrain.SetSafetyEnabled(true);
+        while (IsOperatorControl())
+        {
+            driveTrain.TankDrive(leftStick, rightStick); // drive with tankdrive
+            roller.performRollerTasks();
+            Wait(0.005);				// wait for a motor update time
+        }
+    }
+
+    /**
+     * Runs during test mode
+     */
+    void Test() {
+
+    }
 };
 
 START_ROBOT_CLASS(RobotDemo);
