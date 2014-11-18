@@ -51,7 +51,7 @@ public:
         {
             driveTrain.TankDrive(leftStick, rightStick); // drive with tankdrive
             roller.performRollerTasks();
-            Wait(0.005);				// wait for a motor update time
+            Wait(RobotConstants::teleopPauseDelaySec);   // wait for a motor update time
         }
     }
 

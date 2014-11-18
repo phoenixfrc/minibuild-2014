@@ -1,8 +1,7 @@
 #include "RollCtrl.h"
-#include "Gamepadf310.h"
 
 RollCtrl::RollCtrl(uint32_t talonPort, Gamepadf310 * gamePadPointer):
-m_roller(talonPort)
+m_roller(talonPort), m_remainingRollTimeSec(0.0)
 {
     m_gamePad = gamePadPointer;
     m_desiredState = off;
@@ -67,8 +66,12 @@ void RollCtrl::performRollerTasks()
     //This can be changed later based on mech ideas
     if (A_Down) {
         m_roller.Set(outRollSpeed);
+        m_remainingRollTimeSec = maxRollTimeSec;
     } else if (B_Down) {
         m_roller.Set(inRollSpeed);
+        m_remainingRollTimeSec = maxRollTimeSec;
+    } else if (m_remainingRollTimeSec > 0.0) {
+        m_remainingRollTimeSec -= RobotConstants::teleopPauseDelaySec;
     } else {
         m_roller.StopMotor();
     }

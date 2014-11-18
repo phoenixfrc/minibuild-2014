@@ -11,6 +11,12 @@ struct PortAssign
     static const int leftJoystickID  = 1;
     static const int rightJoystickID = 2;
     static const int gamePadID = 3;
+    
+};
+
+struct RobotConstants
+{
+    static const double teleopPauseDelaySec = 0.005; // main teleop loop delay time
 };
 
 #endif
