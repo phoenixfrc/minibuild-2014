@@ -5,8 +5,8 @@
 
 class RollCtrl
 {
-	static const float pullRollSpeed = 0.75;
-	static const float pushRollSpeed = 0.75;
+	static const float inRollSpeed = 0.75;    // 
+	static const float outRollSpeed = -0.75;  // reverse direction
 	enum rollStates
 	{
 		forward,

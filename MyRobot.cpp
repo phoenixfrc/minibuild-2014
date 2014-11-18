@@ -22,7 +22,7 @@ public:
 		leftStick(PortAssign::leftJoystickID),		                 // as they are declared above.
 	    rightStick(PortAssign::rightJoystickID),
 	    gamePad(PortAssign::gamePadID),
-		roller(PortAssign::rollerChannel, &gamePad)
+        roller(PortAssign::rollerChannel, &gamePad)
 	{
 		driveTrain.SetExpiration(0.1);
 	}

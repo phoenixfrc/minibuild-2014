@@ -62,9 +62,16 @@ void RollCtrl::performRollerTasks()
 	}
 	
 	//Assumptions we're making:
-	//A Controls forward rolling
-	//B Controls backwards rolling
+	//A Controls out rolling
+	//B Controls in rolling
 	//This can be changed later based on mech ideas
+	if (A_Down) {
+		m_roller.Set(outRollSpeed);
+	} else if (B_Down) {
+		m_roller.Set(inRollSpeed);
+	} else {
+		m_roller.StopMotor();
+	}
 	
 	//Setting up variables for next iteration
 	m_pressedALast = A_Down;
