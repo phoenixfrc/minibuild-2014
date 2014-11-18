@@ -22,10 +22,10 @@ void RollCtrl::performRollerTasks()
 	
 	//Getting these ready, these viariables are only true during the first
 	//iteration when a button is pressed (this way we only perform an action once)
-	bool X_Pressed;
-	bool Y_Pressed;
-	bool A_Pressed;
-	bool B_Pressed;
+	bool X_Pressed = X_Down;
+	bool Y_Pressed = Y_Down;
+	bool A_Pressed = A_Down;
+	bool B_Pressed = B_Down;
 	
 	//Tests to set the value of these variables
 	if(!m_pressedALast && A_Down)
