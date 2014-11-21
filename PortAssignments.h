@@ -12,8 +12,8 @@ struct PortAssign
     static const int rightJoystickID = 2;
     static const int gamePadID = 3;
     //camera ports
-    static const int cameraPivotPort = 9;
-    static const int cameraElivationPort = 10; 
+    static const int cameraPivotPort = 7; //up and down
+    static const int cameraElivationPort = 6; // left and right
 };
 
 struct RobotConstants
