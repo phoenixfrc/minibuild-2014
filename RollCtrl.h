@@ -7,9 +7,10 @@
 class RollCtrl
 {
     static const float inRollSpeed = 0.45;    // pull ball in
-    static const float outRollSpeed = -0.45;  // reverse direction
+    static const float outRollSpeed = -0.40;  // reverse direction
     static const double maxRollTimeSec = 10.0; // seconds
-
+    static const float interval = 0.01; // slope change
+    
     enum rollStates
     {
         forward,
@@ -25,9 +26,13 @@ class RollCtrl
     bool m_pressedBLast;
     bool m_pressedXLast;
     bool m_pressedYLast;
+    float m_currentSpeed;
+
 public:
     RollCtrl(uint32_t talonPort, Gamepadf310 * gamePadPointer);
     void performRollerTasks();
+    void updateState(rollStates dStates);
+
     virtual ~RollCtrl(){};
 };
 

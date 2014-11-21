@@ -9,6 +9,7 @@ m_roller(talonPort), m_remainingRollTimeSec(0.0)
     m_pressedBLast = false;
     m_pressedXLast = false;
     m_pressedYLast = false;
+    m_currentSpeed = 0;
 }
 
 void RollCtrl::performRollerTasks()
@@ -57,4 +58,51 @@ void RollCtrl::performRollerTasks()
     m_pressedBLast = B_Down;
     m_pressedXLast = X_Down;
     m_pressedYLast = Y_Down;
+}
+
+void RollCtrl::updateState(rollStates dState)
+{
+    // off code
+    if(dState == off)
+    {
+        if (m_currentSpeed < -interval)
+        {
+            m_currentSpeed += interval;
+        }
+        else if (m_currentSpeed > interval)
+        {
+            m_currentSpeed -= interval;
+        }
+        else
+        {
+            m_currentSpeed = 0;
+        }
+    }
+
+    // forward code
+    if(dState == forward)
+    {
+        if (m_currentSpeed < inRollSpeed - interval)
+        {
+            m_currentSpeed += interval;
+        }
+        else
+        {
+            m_currentSpeed = inRollSpeed;
+        }
+    }
+
+    // backward code
+    if(dState == backward)
+    {
+        if (m_currentSpeed > outRollSpeed + interval)
+        {
+            m_currentSpeed -= interval;
+        }
+        else
+        {
+            m_currentSpeed = outRollSpeed;
+        }
+    }
+    m_roller.Set(m_currentSpeed);
 }
