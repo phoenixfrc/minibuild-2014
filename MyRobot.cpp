@@ -25,6 +25,8 @@ public:
         roller(PortAssign::rollerChannel, &gamePad)
     {
         driveTrain.SetExpiration(0.1);
+        driveTrain.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
+        driveTrain.SetInvertedMoter(RobotDrive::kFrontLeftMotor, false);
     }
 
     /**
