@@ -53,6 +53,8 @@ void RollCtrl::performRollerTasks()
         }
     }
 
+    updateState(m_desiredState);
+    
     //Setting up variables for next iteration
     m_pressedALast = A_Down;
     m_pressedBLast = B_Down;
