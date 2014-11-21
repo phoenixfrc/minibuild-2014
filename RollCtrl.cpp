@@ -19,7 +19,7 @@ void RollCtrl::performRollerTasks()
     bool A_Down = m_gamePad->GetRawButton(Gamepadf310::A);
     bool B_Down = m_gamePad->GetRawButton(Gamepadf310::B);
 
-    //These will trigger only on the rising-edge of button states
+    //These will trigger only on the rising-edge of the Button States
     bool X_FirstPress = X_Down && !m_pressedXLast;
     bool Y_FirstPress = Y_Down && !m_pressedYLast;
     bool A_FirstPress = A_Down && !m_pressedALast;
@@ -31,27 +31,27 @@ void RollCtrl::performRollerTasks()
     //This can be changed later based on mech ideas
     if(A_FirstPress)
     {
-    	if(m_desiredState == forward)
-    	{
+        if(m_desiredState == forward)
+        {
             m_desiredState = off;
-    	}
-    	else
-    	{
-    		m_desiredState = forward;
-    	}
+        }
+        else
+        {    
+            m_desiredState = forward;
+        }
     }
     if(B_FirstPress)
     {
-    	if(m_desiredState == backward)
-    	{
+        if(m_desiredState == backward)
+        {
             m_desiredState = off;
-    	}
-    	else
-    	{
-    		m_desiredState = backward;
-    	}
+        }
+        else
+        {
+            m_desiredState = backward;
+        }
     }
-    
+
     //Setting up variables for next iteration
     m_pressedALast = A_Down;
     m_pressedBLast = B_Down;
