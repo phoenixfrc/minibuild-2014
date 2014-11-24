@@ -10,4 +10,5 @@ OurCamera::OurCamera(Servo * pivotMotor, Servo * elevateMotor)
 
 void OurCamera::CameraUpdate()
 {
+    
 }
