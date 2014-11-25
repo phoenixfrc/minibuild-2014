@@ -108,3 +108,55 @@ void RollCtrl::updateState(rollStates dState)
     }
     m_roller.Set(m_currentSpeed);
 }
+
+void RollCtrl::updateSpeed(rollStates dState)
+{
+    // off code
+    switch(dState)
+    {
+    case off:
+    {
+        if (m_currentSpeed < -interval)
+        {
+            m_currentSpeed += interval;
+        }
+        else if (m_currentSpeed > interval)
+        {
+            m_currentSpeed -= interval;
+        }
+        else
+        {
+            m_currentSpeed = 0;
+        }
+        break;
+    }
+    
+    case forward:
+    {
+        if (m_currentSpeed < inRollSpeed - interval)
+        {
+            m_currentSpeed += interval;
+        }
+        else
+        {
+            m_currentSpeed = inRollSpeed;
+        }
+        break;
+    }
+
+    case backward:
+    {
+        if (m_currentSpeed > outRollSpeed + interval)
+        {
+            m_currentSpeed -= interval;
+        }
+        else
+        {
+            m_currentSpeed = outRollSpeed;
+        }
+        break;
+    }
+    }
+    m_roller.Set(m_currentSpeed);
+}
+

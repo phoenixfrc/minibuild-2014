@@ -29,6 +29,8 @@ class RollCtrl
     bool m_pressedYLast;
     float m_currentSpeed;
 
+    void updateSpeed(rollStates dState);
+    
 public:
     RollCtrl(uint32_t talonPort, Gamepadf310 * gamePadPointer);
     void performRollerTasks();
