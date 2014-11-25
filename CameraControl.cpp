@@ -6,6 +6,8 @@ OurCamera::OurCamera(Servo * pivotMotor, Servo * elevateMotor, Gamepadf310 * gam
     m_elevateMotor = elevateMotor;
     m_cameraElevateAngle = 0;
     m_cameraPivotAngle = 0;
+    m_pivotMotor->SetAngle(m_cameraPivotAngle);
+    m_elevateMotor->SetAngle(m_cameraElevateAngle);
     m_gamePad = gamePadPointer;
 }
 
