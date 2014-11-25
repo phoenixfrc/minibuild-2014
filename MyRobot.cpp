@@ -19,10 +19,6 @@ class RobotDemo : public SimpleRobot
     RollCtrl roller;
     Servo cameraPivotMoter;
     Servo cameraElivationMoter;
-    float cameraElivateAngle;
-    float cameraPivotAngle;
-
-
 public:
     RobotDemo():
         driveTrain(PortAssign::leftMotorChannel, PortAssign::rightMotorChannel), // these must be initialized in the same order
