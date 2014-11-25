@@ -19,6 +19,7 @@ class RobotDemo : public SimpleRobot
     RollCtrl roller;
     Servo cameraPivotMoter;
     Servo cameraElivationMoter;
+    OurCamera camera;
 public:
     RobotDemo():
         driveTrain(PortAssign::leftMotorChannel, PortAssign::rightMotorChannel), // these must be initialized in the same order
@@ -27,7 +28,9 @@ public:
         gamePad(PortAssign::gamePadID),
         roller(PortAssign::rollerChannel, &gamePad),
         cameraPivotMoter(PortAssign::cameraPivotPort),
-        cameraElivationMoter(PortAssign::cameraElivationPort)
+        cameraElivationMoter(PortAssign::cameraElivationPort),
+        camera(&cameraPivotMoter,&cameraElivationMoter,&gamePad)
+        
     {
         driveTrain.SetExpiration(0.1);
     }
@@ -56,6 +59,7 @@ public:
         {
             driveTrain.TankDrive(leftStick, rightStick); // drive with tankdrive
             roller.performRollerTasks();
+            camera.CameraUpdate();
             Wait(RobotConstants::teleopPauseDelaySec);   // wait for a motor update time
         }
     }

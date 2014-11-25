@@ -9,11 +9,11 @@ class OurCamera
     Servo * m_elevateMotor;
     float m_cameraElevateAngle;
     float m_cameraPivotAngle;
-
+    Gamepadf310 * m_gamePad;
 public:
 
-    OurCamera(Servo * pivotMotor, Servo * elevateMotor);
-    void CameraUpdate(Gamepadf310 gamePad);
+    OurCamera(Servo * pivotMotor, Servo * elevateMotor, Gamepadf310 * gamePadPointer);
+    void CameraUpdate();
     virtual ~OurCamera(){};
 };
 
