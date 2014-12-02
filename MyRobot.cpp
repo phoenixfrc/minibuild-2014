@@ -33,8 +33,8 @@ public:
         
     {
         driveTrain.SetExpiration(0.1);
-        driveTrain.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
-        driveTrain.SetInvertedMoter(RobotDrive::kFrontLeftMotor, false);
+        driveTrain.SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+        driveTrain.SetInvertedMotor(RobotDrive::kRearLeftMotor, false);
     }
 
     /**
