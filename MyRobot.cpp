@@ -2,6 +2,7 @@
 #include "PortAssignments.h"
 #include "Gamepadf310.h"
 #include "RollCtrl.h"
+#include "CameraControl.h"
 
 /**
  * This is a demo program showing the use of the RobotBase class.
@@ -16,13 +17,20 @@ class RobotDemo : public SimpleRobot
     Joystick rightStick;
     Gamepadf310 gamePad;
     RollCtrl roller;
+    Servo cameraPivotMoter;
+    Servo cameraElivationMoter;
+    OurCamera camera;
 public:
     RobotDemo():
         driveTrain(PortAssign::leftMotorChannel, PortAssign::rightMotorChannel), // these must be initialized in the same order
         leftStick(PortAssign::leftJoystickID),		                 // as they are declared above.
         rightStick(PortAssign::rightJoystickID),
         gamePad(PortAssign::gamePadID),
-        roller(PortAssign::rollerChannel, &gamePad)
+        roller(PortAssign::rollerChannel, &gamePad),
+        cameraPivotMoter(PortAssign::cameraPivotPort),
+        cameraElivationMoter(PortAssign::cameraElivationPort),
+        camera(&cameraPivotMoter,&cameraElivationMoter,&gamePad)
+        
     {
         driveTrain.SetExpiration(0.1);
         driveTrain.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
@@ -53,6 +61,7 @@ public:
         {
             driveTrain.TankDrive(leftStick, rightStick); // drive with tankdrive
             roller.performRollerTasks();
+            camera.CameraUpdate();
             Wait(RobotConstants::teleopPauseDelaySec);   // wait for a motor update time
         }
     }
