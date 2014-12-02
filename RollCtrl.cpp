@@ -1,5 +1,11 @@
 #include "RollCtrl.h"
 
+
+const float RollCtrl::inRollSpeed;    // pull ball in
+const float RollCtrl::outRollSpeed;  // reverse direction
+const double RollCtrl::maxRollTimeSec; // seconds
+const float RollCtrl::interval; // slope change
+
 RollCtrl::RollCtrl(uint32_t talonPort, Gamepadf310 * gamePadPointer):
 m_roller(talonPort), m_remainingRollTimeSec(0.0)
 {
